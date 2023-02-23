@@ -2,7 +2,7 @@ FROM python:3.7.1 as deps
 COPY requirements.txt /
 RUN mkdir /install && pip install --install-option="--prefix=/install" -r /requirements.txt
 
-FROM python:3.7.1-alpine as base
+FROM python:3.12.0a5-alpine as base
 COPY --from=deps /install /usr/local
 
 RUN apk update && apk add --no-cache --virtual .build-deps \
